@@ -130,16 +130,15 @@
 
 - type: entity
   id: ShootingInkGun
-  name: Shooting Ink Gun
+  name: Ink Gun
   description: Needed to shoot the ink.
   categories: [ HideSpawnMenu ]
   components:
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 10
-    rechargeSound: #delete
-      path: null
+    rechargeSound: null
   - type: BasicEntityAmmoProvider
-    proto: NFBulletSeismicCharge #do new proto
+    proto: SplatterChemMute
     capacity: 1
     count: 1
   - type: Gun
@@ -148,28 +147,28 @@
     fireRate: 1
     selectedMode: FullAuto
     availableModes:
-    - FullAuto
+      - FullAuto
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/water_spray.ogg #set water sound
+      path: /Audio/Weapons/Guns/Gunshots/water_spray.ogg
     soundEmpty: null
     projectileSpeed: 15
-  - type: UseDelay
+  - type: UseDelay #may be set delay other way
     delay: 10
 
 - type: entity
   id: ActionShootingInk
   categories: [ HideSpawnMenu ]
-  name: "[color=yellow]Shoot Ink[/color]"
-  description: "Shoot ink to blind and slow down the target. [color=yellow]10 second cooldown.[/color]"
+  name: "[color=yellow]Выстрелить струей чернил[/color]"
+  description: "Выпустите струю чернил, чтобы ненадолго замедлить и ослепить цель. [color=yellow]10 секунд перезарядки.[/color]"
   components:
   - type: WorldTargetAction
-    icon: { sprite : Objects/Weapons/Guns/Projectiles/water_shot.rsi, state: icon } # new sprite
+    icon: { sprite : Objects\Weapons\Guns\Projectiles\water_shot.rsi, state: icon } #may be just color
     event: !type:ActionGunShootEvent
     priority: 2 #i dont give a fuck what it's means
     checkCanAccess: false #too
-    range: 0
+    range: 0 #no sense to change
     itemIconStyle: BigAction
-  - type: UseDelay
+  - type: UseDelay #may be set delay other way
     delay: 10
 
 - type: entity
