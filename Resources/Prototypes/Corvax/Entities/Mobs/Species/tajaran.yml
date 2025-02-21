@@ -136,9 +136,8 @@
   components:
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 10
-    rechargeSound: null
   - type: BasicEntityAmmoProvider
-    proto: BulletinkShot #randomBlindChance: 1
+    proto: SplatterInk
     capacity: 1
     count: 1
   - type: Gun
@@ -152,8 +151,6 @@
       path: /Audio/Weapons/Guns/Gunshots/water_spray.ogg
     soundEmpty: null
     projectileSpeed: 15
-  - type: UseDelay #may be set delay other way
-    delay: 10
 
 - type: entity
   id: ActionShootingInk
@@ -168,41 +165,7 @@
     checkCanAccess: false #too
     range: 0 #no sense to change
     itemIconStyle: BigAction
-  - type: UseDelay #may be set delay other way
-    delay: 10
-
-type: entity
-  id: BulletinkShot
-  name: Ink
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Clickable
-  - type: Physics
-    bodyType: Dynamic
-    linearDamping: 0
-    angularDamping: 0
-  - type: Projectile
-    randomBlindChance: 1
-    damage:
-      types:
-        Blunt: 0 #it's just water, bro
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/water_shot.rsi
-    layers:
-    - state: icon
-      map: ["enum.VaporVisualLayers.Base"]
-  - type: Ammo
-    muzzleFlash: null
-  - type: Fixtures
-    fixtures:
-      projectile:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.10,-0.30,0.10,0.15"
-        hard: false
-        mask:
-        - Impassable
-        - BulletImpassable
+    useDelay: 10
 
 - type: entity
   save: false

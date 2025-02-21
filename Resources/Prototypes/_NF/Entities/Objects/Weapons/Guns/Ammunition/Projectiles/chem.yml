@@ -123,3 +123,19 @@
         reagents:
         - ReagentId: Fresium
           Quantity: 7 # needs 40u in bloodstream for special effect
+
+- type: entity
+  parent: SplatterChemBase
+  id: SplatterInk
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    randomBlindChance: 1
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 50
+        canReact: false
+        reagents:
+        - ReagentId: Carbon
+          Quantity: 10 # needs 40u in bloodstream for special effect
