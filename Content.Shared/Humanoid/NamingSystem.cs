@@ -30,6 +30,8 @@ namespace Content.Shared.Humanoid
                 case SpeciesNaming.First:
                     return Loc.GetString("namepreset-first",
                         ("first", GetFirstName(speciesProto, gender)));
+                case SpeciesNaming.SkrellGenerator:
+                    return GetSkrellName(speciesProto);
                 case SpeciesNaming.TajaranGenerator:
                     return GetTajaranName(speciesProto, gender);
                 // Start of Nyano - Summary: for Oni naming
@@ -129,6 +131,74 @@ namespace Content.Shared.Humanoid
             }
 
             return fullName;
+        }
+
+        public string GetSkrellName(SpeciesPrototype speciesProto)
+        {
+            List<string> ruFirstVarBeg = new List<string>
+            {
+                "заоо", "зао", "зикс", "зо", "йуо", "кью", "кьюм", "кси", "ксу", "квум", "кву",
+			    "кви", "квей", "квиш", "куу", "кюан", "киэн", "ку", "кил", "лиа", "люик", "луи",
+			    "рио", "сейу", "тсой", "уль", "улур", "урр", "ур", "цу", "эль", "эо", "эу"
+            };
+
+            List<string> ruSecondVarBeg = new List<string>
+            {
+                "заоо", "зао", "зо", "йуо", "лиа", "луи", "рио", "сейу", "эо"
+            };
+
+            List<string> ruFirstVarEnd = new List<string>
+            {
+                "аг", "вум", "вул", "вол", "гли", "зи", "заоо", "зао", "зикс", "зуо", "зук", "зуво", "уоо",
+			    "икс", "ил", "ис", "йук", "кву", "квум", "куум", "куо", "куа", "куак", "кул", "квол", "уо",
+			    "кью", "кьюа", "кэ", "кин", "кии", "кс", "ки", "киу", "кос", "лоа", "лак", "лум", "лик", "су",
+			    "лии", "ллак", "мзикс", "мвол", "ори", "ору", "орр", "ррум", "ру", "руум", "руа", "рл",
+			    "сэк", "сиа", "тейе", "тейку", "тсу", "туа", "туи", "ту", "тал", "уат", "уок", "урр", "уик",
+			    "уии", "уэк", "эйкс", "эль", "эрр", "эй", "эйс", "о", "у", "а", "з", "э", "м" ,"к", "с", "р"
+            };
+
+            List<string> ruSecondVarEnd = new List<string>
+            {
+                "вум", "вул", "вол", "гли", "зи", "заоо", "зао", "зикс", "зуо", "зук", "зуво",
+			    "йук", "кву", "квум", "куум", "куо", "куа", "куак", "кул", "квол", "кью", "кьюа",
+			    "кэ", "кин", "кии", "кс", "ки", "киу", "кос", "лоа", "лак", "лум", "лик", "лии", "ллак",
+			    "мзикс", "мвол", "ррум", "ру", "руум", "руа", "рл", "сэк", "су", "сиа", "тейе", "тейку",
+			    "тсу", "туа", "туи", "ту", "тал", "з", "м", "к", "с", "р"
+            };
+            string newName = "";
+            for (int i = 0; i<2; i++)
+            {
+                int variant = _random.Next(1,2);
+                int leng = _random.Next(1,2);
+                if (variant == 1)
+                {
+                    newName += _random.Pick(ruFirstVarBeg);
+                }
+                else
+                {
+                    newName += _random.Pick(ruSecondVarBeg);
+                }
+                for (int j = 0; j < leng; j++)
+                {
+                    if (_random.Prob(0.5f))
+                    {
+                        newName += "'";
+                    }
+                    if (variant == 1)
+                    {
+                        newName += _random.Pick(ruFirstVarEnd);
+                    }
+                    else
+                    {
+                        newName += _random.Pick(ruSecondVarEnd);
+                    }
+                }
+                if (i == 0)
+                {
+                    newName += " ";
+                }
+            }
+            return newName;
         }
     }
 }

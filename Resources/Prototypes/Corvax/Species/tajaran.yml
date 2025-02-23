@@ -8,7 +8,7 @@
   markingLimits: MobTajaranMarkingLimits
   dollPrototype: MobTajaranDummy
   skinColoration: Hues
-  naming: TajaranGenerator
+  naming: SkrellGenerator
 
 - type: speciesBaseSprites
   id: MobTajaranSprites

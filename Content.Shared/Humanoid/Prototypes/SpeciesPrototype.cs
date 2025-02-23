@@ -137,4 +137,5 @@ public enum SpeciesNaming : byte
     LastFirst, // DeltaV
 
     TajaranGenerator, // Okay, we need this RIGHT NOW. #TODOLIST later.
+    SkrellGenerator,
 }
